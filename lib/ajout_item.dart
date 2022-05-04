@@ -15,7 +15,7 @@ class Ajout extends StatefulWidget {
 
 class _AjoutState extends State<Ajout> {
 
-  String? dropdownvalue = 'Masculin';
+  String? gender = 'Masculin';
 
   var items = [
     'Masculin',
@@ -48,8 +48,8 @@ class _AjoutState extends State<Ajout> {
         padding: EdgeInsets.all(20.0),
         child:  Column(
           children: [
-             Text('Individu à ajouter', textScaleFactor: 1.4, style: TextStyle(color: Colors.red),),
-             Card(
+            Text('Individu à ajouter', textScaleFactor: 1.4, style: TextStyle(color: Colors.red),),
+            Card(
               elevation: 10.0,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -57,33 +57,33 @@ class _AjoutState extends State<Ajout> {
                   (image == null)
                       ? Image.asset("image/720236.png")
                       : Image.file( File(image)),
-                   Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                       IconButton(onPressed: (() => getImage(ImageSource.camera)), icon: new Icon(Icons.camera_enhance)),
-                       IconButton(onPressed: (() => getImage(ImageSource.gallery)), icon: new Icon(Icons.photo_library)),
+                      IconButton(onPressed: (() => getImage(ImageSource.camera)), icon: new Icon(Icons.camera_enhance)),
+                      IconButton(onPressed: (() => getImage(ImageSource.gallery)), icon: new Icon(Icons.photo_library)),
                     ],
                   ),
                   textField(TypeTextField.firstname, "Prénom de l'individu"),
                   textField(TypeTextField.lastname, "Nom de l'individu"),
-                  
+
                   ElevatedButton(
-                      onPressed: montrerDate,
-                      child: Text((date == null)? 'Date d\'anniverssaire' : date.toString()),
+                    onPressed: montrerDate,
+                    child: Text((date == null)? 'Date d\'anniverssaire' : date.toString()),
                   ),
-                  
+
                   textField(TypeTextField.adress, "Adresse de l'individu"),
                   textField(TypeTextField.phone, "Numéro de téléphone"),
                   textField(TypeTextField.mail, "Mail de l'individu"),
                   DropdownButton(
-                    value: dropdownvalue,
+                    value: gender,
                     icon: Icon(Icons.keyboard_arrow_down),
                     items: items.map((items) {
                       return DropdownMenuItem(value: items, child: Text(items));
                     }).toList(),
                     onChanged: (String? newValue) {
                       setState(() {
-                        dropdownvalue = newValue;
+                        gender = newValue;
                       });
                     },
                   ),
@@ -97,7 +97,7 @@ class _AjoutState extends State<Ajout> {
     );
   }
 
-Future<Null> montrerDate() async {
+  Future<Null> montrerDate() async {
     DateTime? birthday = await showDatePicker(
         context: context,
         initialDate: DateTime(2012),
@@ -108,7 +108,7 @@ Future<Null> montrerDate() async {
 
     }
 
-}
+  }
 
   TextField textField(TypeTextField type, String label) {
     return TextField(
