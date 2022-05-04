@@ -22,7 +22,7 @@ class _AjoutState extends State<Ajout> {
     'Feminin'
   ];
 
-  late DateTime date;
+  late DateTime birthday;
 
   late String image;
   late Future<Item> futureItem;
@@ -69,7 +69,7 @@ class _AjoutState extends State<Ajout> {
 
                   ElevatedButton(
                     onPressed: montrerDate,
-                    child: Text((date == null)? 'Date d\'anniverssaire' : date.toString()),
+                    child: Text((birthday == null)? 'Date d\'anniverssaire' : birthday.toString()),
                   ),
 
                   textField(TypeTextField.adress, "Adresse de l'individu"),
